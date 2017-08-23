@@ -20,6 +20,8 @@ import (
 	"runtime"
 	"strings"
 
+	"ether/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -114,6 +116,9 @@ type variableProperties struct {
 			Static_libs  []string
 			Srcs         []string
 		}
+
+		// include ether variables
+		ether android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -231,6 +236,9 @@ type productVariables struct {
 	PgoAdditionalProfileDirs []string `json:",omitempty"`
 
 	VendorVars map[string]map[string]string `json:",omitempty"`
+
+	// include ether variables
+	ether android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
